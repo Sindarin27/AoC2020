@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2020_1", "AoC2020_1\AoC2020_1.csproj", "{2A10BC43-733F-4308-94EA-8B792EB291DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2020_2", "AoC2020_2\AoC2020_2.csproj", "{98E73952-A83B-45E5-B8E1-427119CAA18D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2020_3", "AoC2020_3\AoC2020_3.csproj", "{4415FCF5-17C8-495F-87E3-5E40CB5AE862}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A10BC43-733F-4308-94EA-8B792EB291DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A10BC43-733F-4308-94EA-8B792EB291DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A10BC43-733F-4308-94EA-8B792EB291DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A10BC43-733F-4308-94EA-8B792EB291DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E73952-A83B-45E5-B8E1-427119CAA18D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E73952-A83B-45E5-B8E1-427119CAA18D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E73952-A83B-45E5-B8E1-427119CAA18D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E73952-A83B-45E5-B8E1-427119CAA18D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4415FCF5-17C8-495F-87E3-5E40CB5AE862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4415FCF5-17C8-495F-87E3-5E40CB5AE862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4415FCF5-17C8-495F-87E3-5E40CB5AE862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4415FCF5-17C8-495F-87E3-5E40CB5AE862}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
