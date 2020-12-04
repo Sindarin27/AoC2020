@@ -18,6 +18,7 @@ namespace AoC2020_4
             }
         }
 
+        // Test the sample inputs from AoC
         private static bool UnitTest()
         {
             bool success = true;
@@ -37,6 +38,7 @@ namespace AoC2020_4
                 {"pidV", "000000001"},
                 {"pidI", "0123456789"}
             };
+            // Run all tests. If a test fails, write it to console and indicate incorrectness.
             if (!CheckByr(parts, "byrV"))
             {
                 success = false;
@@ -105,25 +107,27 @@ namespace AoC2020_4
             return success;
         }
 
+        // Read one passport and return whether it is correct
         private static bool ReadPassport()
         {
             Dictionary<String, String> passportparts = new Dictionary<string, string>();
             String line = Console.ReadLine();
-            while (!string.IsNullOrEmpty(line))
+            while (!string.IsNullOrEmpty(line)) // Read until an empty line, indicating the end of this passport
             {
                 String[] parts = line.Split(':', ' ');
 
                 for (int i = 0; i < parts.Length; i += 2)
                 {
-                    passportparts.Add(parts[i], parts[i+1]);
+                    passportparts.Add(parts[i], parts[i+1]); // Add all parts of the passport to a dictionary
                 }
                 
                 line = Console.ReadLine();
             }
 
-            return Complete(passportparts);
+            return Complete(passportparts); // Check the dictionary for completion
         }
 
+        // Return whether a given passport dictionary satisfies the constraints
         private static bool Complete(Dictionary<String, String> parts)
         {
             return (
@@ -133,14 +137,17 @@ namespace AoC2020_4
                 CheckHeight(parts, "hgt") &&
                 CheckHair(parts, "hcl") &&
                 CheckEcl(parts, "ecl") &&
-                CheckPid(parts, "pid")
+                CheckPid(parts, "pid") &&
+                CheckCid(parts, "cid")
             );
         }
 
+        // Check the simple numbers
         private static bool CheckByr(Dictionary<String, String> parts, String name) { return CheckNum(parts, name, 1920, 2002); }
         private static bool CheckIyr(Dictionary<String, String> parts, String name) { return CheckNum(parts, name, 2010, 2020); }
         private static bool CheckEyr(Dictionary<String, String> parts, String name) { return CheckNum(parts, name, 2020, 2030); }
 
+        //Generic method to check a number with an inclusive minimum and maximum.
         private static bool CheckNum(Dictionary<String, String> parts, String name, int min, int max)
         {
             if (!parts.ContainsKey(name)) return false;
@@ -148,6 +155,7 @@ namespace AoC2020_4
             return number >= min && number <= max;
         }
 
+        // Dirty check on the height. Giving it an input of eg 160ccm would break it.
         private static bool CheckHeight(Dictionary<String, String> parts, String name)
         {
             if (!parts.ContainsKey(name)) return false;
@@ -167,6 +175,7 @@ namespace AoC2020_4
             else return false;
         }
 
+        // Regex match the hair colour for validity
         private static bool CheckHair(Dictionary<String, String> parts, String name)
         {
             if (!parts.ContainsKey(name)) return false;
@@ -174,6 +183,7 @@ namespace AoC2020_4
             return Regex.IsMatch(value, "#[0-9a-f]{6}");
         }
 
+        // Check if the colour is in the list of valid colors
         private static String[] validEyeCols = {"amb", "blu", "brn", "gry", "grn", "hzl", "oth"};
         private static bool CheckEcl(Dictionary<String, String> parts, String name)
         {
@@ -188,7 +198,10 @@ namespace AoC2020_4
             String value = parts[name];
             try { long.Parse(value); } catch (FormatException) { return false; } // Not a number
 
-            return value.Length == 9;
+            return value.Length == 9; // Check the length.
         }
+        
+        // Ignore the Cid
+        private static bool CheckCid(Dictionary<string, string> parts, string cid) { return true; }
     }
 }
