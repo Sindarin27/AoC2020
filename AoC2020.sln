@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2020_4", "AoC2020_4\AoC2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2020_5", "AoC2020_5\AoC2020_5.csproj", "{749921CB-9ACF-469A-A391-2CE290617B1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2020_6", "AoC2020_6\AoC2020_6.csproj", "{3B068DD2-3702-4203-960B-74220F369A4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{749921CB-9ACF-469A-A391-2CE290617B1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{749921CB-9ACF-469A-A391-2CE290617B1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{749921CB-9ACF-469A-A391-2CE290617B1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B068DD2-3702-4203-960B-74220F369A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B068DD2-3702-4203-960B-74220F369A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B068DD2-3702-4203-960B-74220F369A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B068DD2-3702-4203-960B-74220F369A4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
