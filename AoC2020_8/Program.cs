@@ -24,6 +24,7 @@ namespace AoC2020_8
                               " to terminate at " + machine.RunNoRepeat());
         }
 
+        // Read a single command
         private static Command ReadCommand(IReadOnlyList<string> parts)
         {
             int argument = int.Parse(parts[1]);
@@ -39,6 +40,7 @@ namespace AoC2020_8
         }
     }
 
+    // A machine running commands
     class Machine
     {
         public int opCounter = 0;
@@ -50,6 +52,7 @@ namespace AoC2020_8
             this.code = code;
         }
 
+        // Reset the values inside the machine to be able to execute again
         public void Reset()
         {
             accumulator = 0;
@@ -60,12 +63,13 @@ namespace AoC2020_8
             }
         }
 
+        // Run the machine. Stop if an endless loop is detected, or the end of the code is reached.
         public int RunNoRepeat()
         {
             while (opCounter >= 0 && opCounter < code.Length)
             {
                 Command run = code[opCounter];
-                // Console.WriteLine(run.ToString() + " ln " + opCounter);
+                // Console.WriteLine(run.ToString() + " ln " + opCounter); // Debug executions
                 if (run.executedBefore) return accumulator;
                 run.Execute(this);
             }
@@ -74,13 +78,14 @@ namespace AoC2020_8
             return accumulator;
         }
 
+        // Check if a cycle is detected.
         public bool CheckRepeat()
         {
             while (opCounter >= 0 && opCounter < code.Length)
             {
                 Command run = code[opCounter];
-                // Console.WriteLine(run.ToString() + " ln " + opCounter);
-                if (run.executedBefore) return true;
+                // Console.WriteLine(run.ToString() + " ln " + opCounter); // Debug executions
+                if (run.executedBefore) return true; // Cycle detected!
                 run.Execute(this);
             }
 
@@ -88,15 +93,16 @@ namespace AoC2020_8
             return false;
         }
 
+        // Find the instruction causing an endless loop by replacing all Nop's/Jmp's one by one
         public int FindWrongInstruction()
         {
             for (int i = 0; i < code.Length; i++)
             {
-                if (code[i] is CmdAccumulate) continue;
+                if (code[i] is CmdAccumulate) continue; // Accumulate command cannot be wrong
                 SwapCodeAt(i);
-                if (!CheckRepeat()) return i;
+                if (!CheckRepeat()) return i; // Return the line number with the mistake
                 SwapCodeAt(i);
-                Reset();
+                Reset(); // Reset the machine
             }
 
             return -1;
@@ -121,6 +127,7 @@ namespace AoC2020_8
 
     #region commands
 
+    // Make it easy to add different commands
     abstract class Command
     {
         public readonly int argument;
@@ -131,6 +138,7 @@ namespace AoC2020_8
             this.argument = argument;
         }
 
+        // Execute this command on some machine. By default, automatically goes to the next command.
         public virtual void Execute(Machine executor)
         {
             executor.opCounter++;
@@ -138,6 +146,7 @@ namespace AoC2020_8
         }
     }
 
+    // Increase the accumulator and obey normal command rules
     class CmdAccumulate : Command
     {
         public CmdAccumulate(int argument) : base(argument)
@@ -151,6 +160,7 @@ namespace AoC2020_8
         }
     }
 
+    // Jump the op counter and skip the default +1 for a command
     class CmdJump : Command
     {
         public CmdJump(int argument) : base(argument)
@@ -164,6 +174,7 @@ namespace AoC2020_8
         }
     }
 
+    // Do nothing but the default stuff
     class CmdNoOperation : Command
     {
         public CmdNoOperation(int argument) : base(argument)
