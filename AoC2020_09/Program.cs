@@ -83,7 +83,7 @@ namespace AoC2020_9
                 if (possibleSums.Contains(n)) return true;
                 else possibleSums.Add(number - n);
             }
-
+            
             return false;
         }
 
